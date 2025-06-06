@@ -1,8 +1,15 @@
 # Wallet Creation QA Assignment
 
+## Automation test
+1. env setup: `mvn install`
+2. run test: `mvn clean test`
+3. generate Allure report: `mvn allure:report`
+4. To view the test report, open the Allure: report at target/site/allure-maven-plugin/index.html, the failed cases screenshot is at tearDown stage attached
+5. Next step, integrate with CI after apk build and upload to the test server
+
 ## Manual Test Cases - Create wallet
-### Functional test cases
-    Flow: Wallet creation -> Create passcode - > Confirm passcode -> Enable notifications -> Wallet ready screen - > Home page - > My wallets page - > Create new wallet
+
+      Flow: Wallet creation -> Create passcode - > Confirm passcode -> Enable notifications -> Wallet ready screen - > Home page - > My wallets page - > Create new wallet
 
 Case 1: (Verify Wallet Creation Entry Point)
 Given user downloads the app freshly
@@ -151,11 +158,4 @@ API Test：
 
 Found potential issues:
 1. Quick double click on create wallet button, 
-   should not open two input passcode screen. 
-
-## Automation test
-1. env setup: `mvn install`
-2. run test: `mvn clean test`
-3. generate Allure report: `mvn allure:report`
-4. To view the test report, open the Allure: report at target/site/allure-maven-plugin/index.html, the failed cases screenshot is at tearDown stage attached
-5. Next step, integrate with CI after apk build and upload to the test server
+   should not open two input passcode screen.

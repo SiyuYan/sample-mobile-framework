@@ -13,15 +13,20 @@ public class PasscodePage extends BasePage {
     public void clickNewWallet() {
         waitElementVisibleByResourceId("CreateNewWalletButton");
         WebElement createNewWalletButton = findElementByResourceId("CreateNewWalletButton");
+        WebElement importWalletButton = findElementByResourceId("ImportWalletButton");
         Assert.assertTrue(createNewWalletButton.isDisplayed(), "Create New Wallet button should be visible");
+        Assert.assertTrue(importWalletButton.isDisplayed(), "Import Wallet button should be visible");
         createNewWalletButton.click();
     }
 
     public void createPasscode(String[] passcodeDigits) {
         String createPasscodeText = "Create passcode";
+        String createPasscodeHintText = "Enter your passcode. Be sure to remember it so you can unlock your wallet.";
         waitElementVisibleByText(createPasscodeText);
         WebElement createPasscodeElement = findElementByText(createPasscodeText);
+        WebElement createPasscodeHintElement = findElementByText(createPasscodeHintText);
         Assert.assertTrue(createPasscodeElement.isDisplayed(), "Create passcode text should be visible");
+        Assert.assertTrue(createPasscodeHintElement.isDisplayed(), "Create passcode hint text should be visible");
         // click digit buttons to create the passcode
         for (String digit : passcodeDigits) {
             WebElement digitButton = findElementByText(digit);
@@ -32,9 +37,12 @@ public class PasscodePage extends BasePage {
 
     public void confirmPasscode(String[] passcodeDigits) {
         String confirmPasscodeText = "Confirm passcode";
+        String confirmPasscodeHintText = "Re-enter your passcode. Be sure to remember it so you can unlock your wallet.";
         waitElementVisibleByText(confirmPasscodeText);
         WebElement confirmPasscodeElement = findElementByText(confirmPasscodeText);
+        WebElement confirmPasscodeHintElement = findElementByText(confirmPasscodeHintText);
         Assert.assertTrue(confirmPasscodeElement.isDisplayed(), "Confirm passcode text should be visible");
+        Assert.assertTrue(confirmPasscodeHintElement.isDisplayed(), "Confirm passcode hint text should be visible");
         // click digit buttons to confirm the passcode
         for (String digit : passcodeDigits) {
             WebElement digitButton = findElementByText(digit);
@@ -45,14 +53,12 @@ public class PasscodePage extends BasePage {
 
     public void skipAllSetup() {
         // first skip
-        skipSetup( "First Skip button should be visible");
+        skipSetup("Keep up with the market!");
         try {
             // second skip
-            skipSetup("Second Skip button should be visible");
-            sleep(2);
+            skipSetup("Brilliant, your wallet is ready!");
         } catch (Exception e) {
-            // If the second skip button is not found, we can assume the first one was sufficient
-            sleep(2);
+            System.out.println("No second skip button found, assuming first one was sufficient.");
         }
     }
 

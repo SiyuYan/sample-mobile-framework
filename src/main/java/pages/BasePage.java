@@ -30,6 +30,7 @@ public class BasePage {
     protected WebElement findElementByResourceId(String resourceId) {
         return driver.findElement(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"" + resourceId + "\")"));
     }
+
     protected List<WebElement> findElementsByResourceId(String resourceId) {
         return driver.findElements(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"" + resourceId + "\")"));
     }
@@ -52,18 +53,14 @@ public class BasePage {
         return driver.findElement(AppiumBy.accessibilityId(accessibilityId));
     }
 
-    public void skipSetup() {
-        skipSetup(null);
-    }
-
-    public void skipSetup(String errorMessage) {
-        if (errorMessage == null || errorMessage.isEmpty()) {
-            errorMessage = "Skip button should be visible";
-        }
+    public void skipSetup(String displayMessage) {
         String skipText = "Skip, I'll do it later";
         waitElementVisibleByText(skipText);
         WebElement skipButton = findElementByText(skipText);
-        Assert.assertTrue(skipButton.isDisplayed(), errorMessage);
+        WebElement displayMessageElement = findElementByText(displayMessage);
+        Assert.assertTrue(skipButton.isDisplayed(), skipText + " should be visible");
+        Assert.assertTrue(displayMessageElement.isDisplayed(), displayMessage + " should be visible");
         skipButton.click();
+        sleep(2);
     }
 }

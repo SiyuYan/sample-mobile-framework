@@ -1,11 +1,14 @@
 package tests;
 
+import io.qameta.allure.testng.Tag;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.PasscodePage;
 import pages.WalletListPage;
 import pages.WalletCreationPage;
+import utils.TestUtils;
 
+@Tag("create-wallet")
 @Test(description = "Create 2 wallets with end to end flow")
 public class WalletCreationTest extends BaseTest {
 
@@ -23,7 +26,7 @@ public class WalletCreationTest extends BaseTest {
 
     @Test(description = "Create first wallet success with passcode")
     public void testCreateFirstWallet() {
-        String[] passcodeDigits = {"1", "2", "3", "4", "5", "6"};
+        String[] passcodeDigits = TestUtils.generateRandomPasscode();
         passcodePage.clickNewWallet();
         passcodePage.createPasscode(passcodeDigits);
         passcodePage.confirmPasscode(passcodeDigits);
@@ -41,7 +44,7 @@ public class WalletCreationTest extends BaseTest {
     public void testCreateSecondWallet() {
         walletCreationPage.clickCreateNewWallet();
         walletCreationPage.clickCreateSecretPhrase();
-        walletCreationPage.skipSetup();
+        walletCreationPage.skipSetup("Brilliant, your wallet is ready!");
     }
 
     @Test(description = "Verify wallet creation results", dependsOnMethods = "testCreateSecondWallet")
