@@ -21,12 +21,12 @@
 
       Flow: Wallet creation -> Create passcode - > Confirm passcode -> Enable notifications -> Wallet ready screen - > Home page - > My wallets page - > Create new wallet
 ### Functional test
-      Case 1: (Verify Wallet Creation Entry Point)
+#### Case 1: Verify Wallet Creation Entry Point
       Given user downloads the app freshly
       When user opens application
       Then user should see the "create new wallet" button above "I already have a wallet" button
 
-      Case 2:(Wallet passcode setup)
+#### Case 2: Wallet passcode setup
       Given user downloads the app and opens it
       When user click "create new wallet" button
       Then user should see the "create passcode" screen
@@ -36,18 +36,18 @@
       When user click back button of devices
       Then user go back to the "create new wallet" screen again and entered passcode data is cleared
 
-      Case 3:(Wallet passcode setup)
+#### Case 3: Wallet passcode setup
       Given user at the create passcode screen
       When user inputs a passcode with 6 numbers
       Then user should see the "confirm passcode" screen
       Then user should see "Re-enter your passcode. Be sure to remember it so you can unlock your wallet" hint text under input field
       
-      Case 4:(Back button behavior)
+#### Case 4: Back button behavior
       Given user at confirm passcode screen
       When user click back button
       Then user should back to "create wallet" screen instead of "create passcode" screen(Not save passcode)
       
-      Case 5:(Wallet passcode setup)
+#### Case 5: Wallet passcode setup
       Given user at the "confirm passcode" screen
       When user not input number
       Then user can not continue create wallet
@@ -62,12 +62,12 @@
       Then user will see the "create passcode" screen again
       Then user should see the "Those passcodes did not match" hint text under input field
       
-      Case 6:(Wallet passcode setup)
+#### Case 6: Wallet passcode setup
       Given user at the "confirm passcode" screen
       When user inputs the same 6 numbers passcode with previous screen
       Then user should enable notifications screen for first time user 
       
-      Case 7:(notification setup)
+#### Case 7: notification setup
       Given user at the notification screen
       When user click back button
       Then user should back to the "create passcode" screen again
@@ -79,7 +79,7 @@
       When user at the notification screen and select "skip" button
       Then user should see the "wallet ready" screen 
       
-      Case 8:(wallet ready screen after creat wallet success)
+#### Case 8: wallet ready screen after creat wallet success
       Given user at the "wallet ready" screen
       Then user should see the "Brilliant, Your wallet is ready!" text
       And user should see the Buy crypto button and Deposit crypto button and Skip for now button
@@ -87,14 +87,14 @@
       When user at Home page
       Then user should see the "Main Wallet 1" as default create name display with $0.00 balance
       
-      Case 9:(create wallet in my wallet page)
+#### Case 9: create wallet in my wallet page
       Given user at my wallets page
       When user clicks "Add wallet" button
       Then user should see the "create new wallet" button above "Add existing wallet" button
       Given user click "create new wallet" button
       Then user should see secret phase selection create and swift selection create
       
-      Case 10:(create wallet with secret phase method)
+#### Case 10: create wallet with secret phase method
       Given user at create new wallet screen (with one main wallet already)
       When user clicks "create secret phase" button
       Then user go to the "wallet ready" screen with "Brilliant, Your wallet is ready!" text
@@ -105,7 +105,7 @@
       Then first wallet name should be "Main Wallet 1" 
       And second wallet name should be "Main Wallet 2" and second one wallet mark icon with default
       
-      Case 11:(create wallet with swift method)
+#### Case 11: create wallet with swift method
       Given user at create new wallet screen (with one main wallet already)
       When user clicks "create swift selection" button
       Then security tips display
@@ -116,7 +116,7 @@
       When user answers question correctly
       Then user go to "Set wallet name" screen
       
-      Case 12:(set wallet name with swift method)
+#### Case 12: set wallet name with swift method
       Given user at "Set wallet name" screen
       When user inputs valid wallet name less than 4 character or more than 24 characters
       Then the Done button should be disabled
@@ -136,12 +136,12 @@
       Then 3 wallets in my wallets page display and third one wallet "YanSiyu" have mark icon with default
       And "YanSiyu" wallet display at new Swift wallets sections
       
-      Case 13:(turnoff network create wallet)
+#### Case 13: turnoff network create wallet
       Given user turnoff network
       When Google passcode manager popup and click continue button and input correct PIN when
       Then display please try again and back to set wallet name screen
       
-      Case 14:(End to end flow)
+#### Case 14: End to end flow
       Given user at the "create passcode" screen
       When user inputs a passcode with 6 numbers
       And user inputs the same 6 numbers passcode at "confirm passcode" screen
