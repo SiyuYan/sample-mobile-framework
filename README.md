@@ -15,8 +15,9 @@
 4. Support Retry and error handling for flaky tests. Random passcode generation
 
 ### P0 Smoke case flow
-     Create First Wallet -> Set Random 6-digit Passcode -> Skip Initial Setup -> Create Second Wallet -> Verify Wallet List
+    Create First Wallet -> Set Random 6-digit Passcode -> Skip Initial Setup -> Create Second Wallet -> Verify Wallet List
 
+Write one failed case as example
 ## Manual Test Cases - Create wallet
 
       Flow: Wallet creation -> Create passcode - > Confirm passcode -> Enable notifications -> Wallet ready screen - > Home page - > My wallets page - > Create new wallet
