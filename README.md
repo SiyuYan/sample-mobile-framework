@@ -154,7 +154,8 @@ Found potential issues:
    should not open two input passcode screen. 
 
 ## Automation test
-env setup: `mvn install`
-run test: `mvn clean test`
-generate Allure report: `mvn allure:report`
-To view the test report, open the Allure: report at target/site/allure-maven-plugin/index.html, the failed cases screenshot is at tearDown stage attached
+1. env setup: `mvn install`
+2. run test: `mvn clean test`
+3. generate Allure report: `mvn allure:report`
+4. To view the test report, open the Allure: report at target/site/allure-maven-plugin/index.html, the failed cases screenshot is at tearDown stage attached
+5. Next step, integrate with CI after apk build and upload to the test server

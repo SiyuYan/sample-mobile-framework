@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
+import java.util.List;
 
 public class BasePage {
     protected AppiumDriver driver;
@@ -26,25 +27,28 @@ public class BasePage {
         }
     }
 
-    protected WebElement selectClickableByResourceId(String resourceId) {
+    protected WebElement findElementByResourceId(String resourceId) {
         return driver.findElement(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"" + resourceId + "\")"));
     }
+    protected List<WebElement> findElementsByResourceId(String resourceId) {
+        return driver.findElements(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"" + resourceId + "\")"));
+    }
 
-    protected void waitClickableByResourceId(String resourceId) {
-        driverWait.until(ExpectedConditions.elementToBeClickable(
+    protected void waitElementVisibleByResourceId(String resourceId) {
+        driverWait.until(ExpectedConditions.visibilityOfElementLocated(
                 AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"" + resourceId + "\")")));
     }
 
-    protected WebElement selectClickableViewByText(String text) {
+    protected WebElement findElementByText(String text) {
         return driver.findElement(AppiumBy.androidUIAutomator("new UiSelector().text(\"" + text + "\")"));
     }
 
-    protected void waitForTextClickable(String text) {
-        driverWait.until(ExpectedConditions.elementToBeClickable(
+    protected void waitElementVisibleByText(String text) {
+        driverWait.until(ExpectedConditions.visibilityOfElementLocated(
                 AppiumBy.androidUIAutomator("new UiSelector().text(\"" + text + "\")")));
     }
 
-    protected WebElement selectClickableByAccessibilityId(String accessibilityId) {
+    protected WebElement findElementByAccessibilityId(String accessibilityId) {
         return driver.findElement(AppiumBy.accessibilityId(accessibilityId));
     }
 
@@ -57,8 +61,8 @@ public class BasePage {
             errorMessage = "Skip button should be visible";
         }
         String skipText = "Skip, I'll do it later";
-        waitForTextClickable(skipText);
-        WebElement skipButton = selectClickableViewByText(skipText);
+        waitElementVisibleByText(skipText);
+        WebElement skipButton = findElementByText(skipText);
         Assert.assertTrue(skipButton.isDisplayed(), errorMessage);
         skipButton.click();
     }

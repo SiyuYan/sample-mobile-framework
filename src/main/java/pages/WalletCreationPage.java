@@ -11,15 +11,15 @@ public class WalletCreationPage extends BasePage {
     }
 
     public void clickCreateNewWallet() {
-        waitClickableByResourceId("CreateNewWallet");
-        WebElement createNewWallet = selectClickableByResourceId("CreateNewWallet");
+        waitElementVisibleByResourceId("CreateNewWallet");
+        WebElement createNewWallet = findElementByResourceId("CreateNewWallet");
         Assert.assertTrue(createNewWallet.isDisplayed(), "Create New Wallet option should be visible");
         createNewWallet.click();
     }
 
     public void clickCreateSecretPhrase() {
-        waitClickableByResourceId("secretPhraseCreateButton");
-        WebElement secretPhraseButton = selectClickableByResourceId("secretPhraseCreateButton");
+        waitElementVisibleByResourceId("secretPhraseCreateButton");
+        WebElement secretPhraseButton = findElementByResourceId("secretPhraseCreateButton");
         Assert.assertTrue(secretPhraseButton.isDisplayed(), "Create Secret Phrase button should be visible");
         secretPhraseButton.click();
     }

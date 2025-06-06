@@ -30,17 +30,20 @@ public class WalletCreationTest extends BaseTest {
         passcodePage.skipAllSetup();
         passcodePage.tryHandleWhatsNewPopupIfExist();
     }
+
     @Test(description = "Navigate to wallet creation screen after creation", dependsOnMethods = "testCreateFirstWallet")
     public void testNavigateToWalletCreation() {
         walletListPage.selectWallet("Main Wallet 1");
         walletListPage.clickAddWallet();
     }
+
     @Test(description = "Create second wallet", dependsOnMethods = "testNavigateToWalletCreation")
     public void testCreateSecondWallet() {
         walletCreationPage.clickCreateNewWallet();
         walletCreationPage.clickCreateSecretPhrase();
         walletCreationPage.skipSetup();
     }
+
     @Test(description = "Verify wallet creation results", dependsOnMethods = "testCreateSecondWallet")
     public void testVerifyWalletCreation() {
         walletListPage.selectWallet("Main Wallet 2");
