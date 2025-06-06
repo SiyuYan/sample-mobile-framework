@@ -2,8 +2,9 @@
 <suite name="SampleMobileAutomation">
     <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+        <listener class-name="utils.RetryAnalyzer"/>
     </listeners>
-    <test name="Test">
+    <test name="Wallet Creation Test">
         <parameter name="platformName" value="Android"/>
         <classes>
             <class name="tests.WalletCreationTest"/>
