@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="SampleMobileAutomation">
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
+    <test name="Test">
+        <parameter name="platformName" value="Android"/>
+        <classes>
+            <class name="tests.WalletCreationTest"/>
+            <class name="tests.WalletCreationFailTest"/>
+        </classes>
+    </test>
+</suite>
